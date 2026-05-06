@@ -28,6 +28,11 @@
             /* 見た目調整 */
             line-height: 2;
             letter-spacing: 0.1em;
+            @media (max-width: 768px) {
+    .container {
+        overflow-x: auto;
+    }
+}
         }
 
         h1 {
@@ -53,9 +58,14 @@
     </div>
 <script>
 window.onload = function() {
-    setTimeout(function() {
+    if (window.innerWidth <= 768) {
+        // スマホ → containerをスクロール
+        const el = document.querySelector('.container');
+        el.scrollLeft = el.scrollWidth;
+    } else {
+        // PC → windowをスクロール
         window.scrollTo(document.documentElement.scrollWidth, 0);
-    }, 100);
+    }
 };
 </script>
 
